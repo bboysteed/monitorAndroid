@@ -15,24 +15,14 @@ import (
 	"time"
 )
 
-var upgrader = websocket.Upgrader{
-	ReadBufferSize:  1024,
-	WriteBufferSize: 1024,
-	CheckOrigin: func(r *http.Request) bool {
-		return true
-	},
-}
 
-type Message struct {
-	*models.Cpu `json:"cpuInfo"`
-	*models.Ram `json:"ramInfo"`
-}
+
 
 var (
 	cfg = &models.CFG{}
 	cpu = &models.Cpu{}
 	ram = &models.Ram{}
-	mgs = &Message{
+	mgs = &models.Message{
 		Cpu: cpu,
 		Ram: ram,
 	}
@@ -42,6 +32,14 @@ var (
 	upmission   = &models.UpMission{}
 	downmission = &models.DownMission{}
 	logPath     = "./logs"
+
+	upgrader = websocket.Upgrader{
+		ReadBufferSize:  1024,
+		WriteBufferSize: 1024,
+		CheckOrigin: func(r *http.Request) bool {
+			return true
+		},
+	}
 )
 
 //adb shell cat /sys/class/net/wlan0/address
