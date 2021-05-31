@@ -5,7 +5,6 @@ import (
 	"fmt"
 	"io/ioutil"
 	"monitorAndroid/utils"
-	"os/exec"
 	"regexp"
 )
 
@@ -21,7 +20,7 @@ func (p *Phone) GetAllPackages(phones *[]Phone) {
 			return
 		}
 	}
-	var out []byte
+	var out string
 	var err error
 	//var mac string
 	//get mac adress
@@ -29,12 +28,12 @@ func (p *Phone) GetAllPackages(phones *[]Phone) {
 
 	//get packages
 	res := make([]string, 0)
-	out, err = exec.Command("bash", "-c", "adb shell pm list packages").Output()
+	out, err = utils.Exec("adb shell pm list packages")
 	if err != nil {
 		fmt.Printf("list package 命令失败，err is：%v\n", err.Error())
 	} else {
 		reg := regexp.MustCompile(`package:(.*?)\s+`)
-		match := reg.FindAllStringSubmatch(string(out), -1)
+		match := reg.FindAllStringSubmatch(out, -1)
 		//fmt.Printf("match is : %v", match)
 
 		for _, v := range match {
@@ -51,7 +50,7 @@ func (p *Phone) GetAllPackages(phones *[]Phone) {
 	if marshallErr != nil {
 		fmt.Printf("marshall phones err, err is:%v\n", marshallErr)
 	} else {
-		err = ioutil.WriteFile("./dist/packages.json", newJson, 0644)
+		err = ioutil.WriteFile("./packages.json", newJson, 0644)
 		if err != nil {
 			fmt.Printf("Write json err,err is: %v\n", err)
 		}
