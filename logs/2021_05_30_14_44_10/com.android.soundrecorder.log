@@ -1,0 +1,82 @@
+:Monkey: seed=945063540377 count=10
+:AllowPackage: com.android.soundrecorder
+:IncludeCategory: android.intent.category.LAUNCHER
+:IncludeCategory: android.intent.category.MONKEY
+// Selecting main activities from category android.intent.category.LAUNCHER
+//   - NOT USING main activity com.android.contacts.activities.PeopleActivity (from package com.android.contacts)
+//   - NOT USING main activity com.android.androidsettings.Settings (from package com.android.androidsettings)
+//   - NOT USING main activity com.android.browser.BrowserActivity (from package com.android.browser)
+//   + Using main activity com.android.soundrecorder.SoundRecorder (from package com.android.soundrecorder)
+//   - NOT USING main activity com.chery.dialer.ui.MainActivity (from package com.chery.dialer)
+//   - NOT USING main activity com.chery.launcher.MainActivity (from package com.chery.launcher)
+//   - NOT USING main activity com.chery.settings.ui.MainActivity (from package com.chery.settings)
+//   - NOT USING main activity cn.kuwo.kwmusiccar.WelcomeActivity (from package cn.kuwo.kwmusiccar)
+//   - NOT USING main activity com.example.audioroute.AudioRoute (from package com.example.audioroute)
+//   - NOT USING main activity com.autonavi.auto.remote.fill.UsbFillActivity (from package com.autonavi.amapauto)
+//   - NOT USING main activity com.android.providers.downloads.ui.DownloadList (from package com.android.providers.downloads.ui)
+//   - NOT USING main activity com.redstone.fotaapp.MainActivity (from package com.redstone.fotaapp)
+//   - NOT USING main activity com.kaolafm.auto.home.HubActivity (from package com.edog.car)
+//   - NOT USING main activity com.yfve.pinyinime.SettingsActivity (from package com.yfve.pinyinime)
+//   - NOT USING main activity com.iflytek.cutefly.speechclient.hmi.CommonActivity (from package com.iflytek.cutefly.speechclient.hmi)
+//   - NOT USING main activity com.chery.assist.MainActivity (from package com.chery.assist)
+//   - NOT USING main activity com.nforetek.bt.ui.MainMenuActivity (from package com.chery.bt)
+//   - NOT USING main activity com.amwin.carlife.ui.activity.MainActivity (from package com.amwin.carlife.app)
+//   - NOT USING main activity com.amwin.carplay.app.MainActivity (from package com.amwin.carplay.app)
+//   - NOT USING main activity com.yfve.mcu.MainActivity (from package com.yfve.avn)
+//   - NOT USING main activity com.chery.projection.MainActivity (from package com.yfve.avn)
+//   - NOT USING main activity com.chery.care.MainActivity (from package com.chery.care)
+//   - NOT USING main activity com.chery.factory.EnterActivity (from package com.chery.engineering)
+//   - NOT USING main activity com.chery.eol.MainActivity (from package com.chery.eol)
+//   - NOT USING main activity com.chery.hvac.MainActivity (from package com.chery.hvac)
+//   - NOT USING main activity com.chery.help.activity.MainActivity (from package com.chery.help)
+//   - NOT USING main activity com.chery.icm.ui.MainActivity (from package com.chery.icm)
+//   - NOT USING main activity com.chery.media.MainActivity (from package com.chery.media)
+//   - NOT USING main activity com.chery.multifunc.MainActivity (from package com.chery.multifunc)
+//   - NOT USING main activity com.chou.acemusicplayer.MainActivity (from package com.chou.acemusicplayer)
+//   - NOT USING main activity com.chery.property.MainActivity (from package com.chery.property)
+//   - NOT USING main activity com.chery.radio.MainActivity (from package com.chery.radio)
+//   - NOT USING main activity com.chery.systemui.ui.MainActivity (from package com.chery.systemui)
+//   - NOT USING main activity com.chery.tbox.TBoxActivity (from package com.chery.tbox)
+//   - NOT USING main activity com.chery.tsp.MainActivity (from package com.chery.tsp)
+//   - NOT USING main activity com.chery.update.MainActivity (from package com.chery.update)
+//   - NOT USING main activity com.chery.vr.ui.VrActivity (from package com.chery.vr)
+//   - NOT USING main activity com.chery.violation.ui.MainActivity (from package com.chery.violation)
+//   - NOT USING main activity com.chery.wallpaper.MainActivity (from package com.chery.wallpaper)
+//   - NOT USING main activity com.chery.weather.MainActivity (from package com.chery.weather)
+//   - NOT USING main activity com.freescale.wfdsink.WfdSinkActivity (from package com.freescale.wfdsink)
+//   - NOT USING main activity com.skyworthauto.dvrchery.view.LiveViewActivity (from package com.skyworthauto.dvrchery)
+// Selecting main activities from category android.intent.category.MONKEY
+//   - NOT USING main activity com.android.launcher2.Launcher (from package com.android.launcher)
+//   - NOT USING main activity com.android.androidsettings.Settings$RunningServicesActivity (from package com.android.androidsettings)
+//   - NOT USING main activity com.android.androidsettings.Settings$StorageUseActivity (from package com.android.androidsettings)
+//   - NOT USING main activity com.chery.launcher.MainActivity (from package com.chery.launcher)
+// Seeded: 945063540377
+// Event percentages:
+//   0: 15.306122%
+//   1: 10.204082%
+//   2: 2.0408163%
+//   3: 15.306122%
+//   4: -0.0%
+//   5: 25.510204%
+//   6: 15.306122%
+//   7: -0.0%
+//   8: 2.0408163%
+//   9: 1.0204082%
+//   10: 13.265306%
+:Switch: #Intent;action=android.intent.action.MAIN;category=android.intent.category.LAUNCHER;launchFlags=0x10200000;component=com.android.soundrecorder/.SoundRecorder;end
+    // Allowing start of Intent { act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] cmp=com.android.soundrecorder/.SoundRecorder } in package com.android.soundrecorder
+Sleeping for 700 milliseconds
+:Sending Touch (ACTION_DOWN): 0:(1196.0,351.0)
+:Sending Touch (ACTION_POINTER_DOWN 1): 0:(1196.2131,351.325) 1:(1229.0,593.0)
+:Sending Touch (ACTION_MOVE): 0:(1196.7805,352.47183) 1:(1224.7853,598.1481)
+:Sending Touch (ACTION_MOVE): 0:(1197.3108,354.16354) 1:(1222.452,601.28015)
+:Sending Touch (ACTION_MOVE): 0:(1197.5787,354.93192) 1:(1216.3789,607.89105)
+:Sending Touch (ACTION_MOVE): 0:(1197.9634,355.90683) 1:(1202.3911,611.47626)
+:Sending Touch (ACTION_MOVE): 0:(1198.3455,359.4505) 1:(1197.242,612.64105)
+:Sending Touch (ACTION_MOVE): 0:(1198.722,362.1273) 1:(1195.6681,620.30005)
+:Sending Touch (ACTION_MOVE): 0:(1199.2898,363.46548) 1:(1183.8326,627.43)
+Events injected: 10
+:Sending rotation degree=0, persist=false
+:Dropped: keys=0 pointers=0 trackballs=0 flips=0 rotations=0
+## Network stats: elapsed time=860ms (0ms mobile, 0ms wifi, 860ms not connected)
+// Monkey finished

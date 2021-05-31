@@ -1,0 +1,10 @@
+# github.com/BurntSushi/toml v0.3.1
+github.com/BurntSushi/toml
+# github.com/gorilla/websocket v1.4.2
+## explicit
+github.com/gorilla/websocket
+# github.com/jinzhu/configor v1.2.1
+## explicit
+github.com/jinzhu/configor
+# gopkg.in/yaml.v2 v2.2.2
+gopkg.in/yaml.v2
