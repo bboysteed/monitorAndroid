@@ -9,7 +9,7 @@
             :visible.sync="drawer"
             direction="rtl"
             >
-          <span>我来啦!</span>
+          <span>填写说明</span>
         </el-drawer>
       </div>
       <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="100px" class="demo-ruleForm">
@@ -18,7 +18,7 @@
         </el-form-item>
         <el-form-item label="被测app" prop="apps">
           <el-select v-model="ruleForm.apps" multiple placeholder="请选择要测试的app" size="medium" style="width: 300px"
-                     clearable collapse-tags>
+                     clearable>
             <el-option
 
                 v-for="app in apps"

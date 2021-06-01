@@ -15,8 +15,6 @@ import (
 )
 
 
-
-
 var (
 	cfg = &models.CFG{}
 	cpu = &models.Cpu{}
