@@ -49,6 +49,23 @@
           <!--        <el-input v-model="ruleForm.thread"></el-input>-->
         </el-form-item>
 
+        <el-form-item label="随机事件数">
+          <el-input-number v-model="ruleForm.operaNums" :min="10" :max="20000" label="测试线程" :step="10" size="small"
+                           step-strictly></el-input-number>
+
+          <el-popover
+              placement="top-start"
+              width="200"
+              trigger="hover"
+              content="数字越大代表每次测试的随机事件越多测试时长越长">
+            <!--              <el-button slot="reference">hover 激活</el-button>-->
+            <el-tag slot="reference" size="small" type="warning" style="margin-left: 20px" effect="plain">输入10-20000的数字
+            </el-tag>
+          </el-popover>
+
+          <!--        <el-input v-model="ruleForm.thread"></el-input>-->
+        </el-form-item>
+
         <el-form-item label="操作间隔(ms)">
           <el-input-number v-model="ruleForm.throehold" :min="300" :max="3000" label="测试线程" :step="100" size="small"
                            step-strictly></el-input-number>
@@ -151,6 +168,7 @@ export default {
         missionName: '',
         apps: [],
         thread: '10',
+        operaNums:'100',
         throehold: '1000',
         // date1: '',
         // date2: '',
@@ -215,6 +233,7 @@ export default {
             name: this.ruleForm.missionName,
             apps: this.ruleForm.apps,
             thread: this.ruleForm.thread,
+            operanums:this.ruleForm.operaNums,
             interval: this.ruleForm.throehold,
           }
           // let conf = {headers:{

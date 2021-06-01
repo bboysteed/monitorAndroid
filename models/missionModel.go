@@ -1,10 +1,11 @@
 package models
 
 type UpMission struct {
-	Name     string   `json:"name"`
-	Apps     []string `json:"apps"`
-	Thread   int      `json:"thread"`
-	Interval int      `json:"interval"`
+	Name      string   `json:"name"`
+	Apps      []string `json:"apps"`
+	Thread    int      `json:"thread"`
+	OperaNums int      `json:"operanums"`
+	Interval  int      `json:"interval"`
 }
 type DownMission struct {
 	ID            int    `json:"id"`

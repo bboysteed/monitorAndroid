@@ -16,7 +16,7 @@ type monkeyEngin struct {
 }
 
 func RunningMonkey(um *models.UpMission, dm *models.DownMission, logPath string) {
-	fmt.Printf("mission start at:%v\n", time.Now().Format("2006/01/02 15:04:05"))
+	log.Printf("mission start at:%v\n", time.Now().Format("2006/01/02 15:04:05"))
 	for i := 1; i <= um.Thread; i++ {
 		now := time.Now().Format("2006_01_02_15_04_05")
 		//path,_:=filepath.Abs(logPath)
@@ -27,16 +27,15 @@ func RunningMonkey(um *models.UpMission, dm *models.DownMission, logPath string)
 			log.Printf("CREAT DIR path with err :%v\n", err)
 		}
 		for _, app := range um.Apps {
-			go RunAMonkey(app, strconv.Itoa(um.Interval), storePath, dm)
+			go RunAMonkey(app, strconv.Itoa(um.Interval), storePath,strconv.Itoa(um.OperaNums),dm)
 			time.Sleep(time.Second)
 		}
 	}
 }
-
-func RunAMonkey(app, interval, storePath string, dm *models.DownMission) {
+func RunAMonkey(app, interval, storePath ,operaNums string, dm *models.DownMission) {
 	storelogPath := filepath.Join(storePath, app+".log")
 	log.Printf("开始测试软件:%v...\n", app)
-	command := fmt.Sprintf("adb shell monkey -p %v --pct-syskeys 0 --throttle %v -v -v -v 10 >%v", app, interval, storelogPath)
+	command := fmt.Sprintf("adb shell monkey -p %v --pct-syskeys 0 --throttle %v -v -v -v %v >%v", app, interval,operaNums, storelogPath)
 	log.Printf("test command is:%v\n", command)
 
 	_, err := utils.Exec(command)

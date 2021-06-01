@@ -12,7 +12,7 @@ Vue.use(ElementUI)
 
 if (process.env.NODE_ENV==='development'){
   // axios.defaults.baseURL = 'http://10.136.158.218:8089/'
-  axios.defaults.baseURL = 'http://192.168.50.168:8089/'
+  axios.defaults.baseURL = 'http://192.168.50.6:8089/'
 }
 console.log(process.env)
 

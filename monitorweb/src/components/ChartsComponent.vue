@@ -75,7 +75,7 @@ export default {
         this.$message({
           showClose: true,
           message: "设备掉线",
-          duration: 0,
+          duration: 30,
           type: "error",
           offset:40,
         })
