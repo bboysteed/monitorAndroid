@@ -143,6 +143,9 @@ func checkDeviceOffline() {
 			log.Printf("devices is offline,please reconnect device...\n")
 			downmission.DeviceOffline = true
 		} else {
+			if downmission.DeviceOffline==true{
+				log.Println("device reconnected!!")
+			}
 			downmission.DeviceOffline = false
 		}
 		time.Sleep(10 * time.Second)
