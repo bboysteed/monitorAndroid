@@ -2,6 +2,7 @@ package monkey
 
 import (
 	"fmt"
+	"log"
 	"monitorAndroid/models"
 	"monitorAndroid/utils"
 	"os"
@@ -23,7 +24,7 @@ func RunningMonkey(um *models.UpMission, dm *models.DownMission, logPath string)
 
 		err := os.MkdirAll(storePath, os.ModePerm)
 		if err != nil {
-			fmt.Printf("CREAT DIR path with err :%v\n", err)
+			log.Printf("CREAT DIR path with err :%v\n", err)
 		}
 		for _, app := range um.Apps {
 			go RunAMonkey(app, strconv.Itoa(um.Interval), storePath, dm)
@@ -34,13 +35,13 @@ func RunningMonkey(um *models.UpMission, dm *models.DownMission, logPath string)
 
 func RunAMonkey(app, interval, storePath string, dm *models.DownMission) {
 	storelogPath := filepath.Join(storePath, app+".log")
-	fmt.Printf("开始测试软件:%v...\n", app)
+	log.Printf("开始测试软件:%v...\n", app)
 	command := fmt.Sprintf("adb shell monkey -p %v --pct-syskeys 0 --throttle %v -v -v -v 10 >%v", app, interval, storelogPath)
-	fmt.Printf("test command is:%v\n", command)
+	log.Printf("test command is:%v\n", command)
 
 	_, err := utils.Exec(command)
 	if err != nil {
-		fmt.Printf("monkey command exec failed,err is :%v\n", err)
+		log.Printf("monkey command exec failed,err is :%v\n", err)
 	}
 	//cmd := exec.Command("bash","-c",command)
 	//err:= cmd.Start()

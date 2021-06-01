@@ -1,7 +1,7 @@
 package models
 
 import (
-	"fmt"
+	"log"
 	"monitorAndroid/utils"
 	"time"
 )
@@ -14,7 +14,7 @@ func (r *Ram) RefreshRate() {
 
 	out, err := utils.Exec("adb shell dumpsys meminfo")
 	if err != nil {
-		fmt.Printf("dumpsys meminfo命令失败，err is：%v\n", err.Error())
+		log.Printf("dumpsys meminfo命令失败，err is：%v\n", err.Error())
 	} else {
 		total := utils.RegFind(`Total\s+RAM:\s+(\d+)\s+kB`, out, 1)
 		used := utils.RegFind(`Used\s+RAM:\s+(\d+)\s+kB`, out, 1)

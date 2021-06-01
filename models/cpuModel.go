@@ -1,7 +1,6 @@
 package models
 
 import (
-	"fmt"
 	"log"
 	"monitorAndroid/utils"
 	"strings"
@@ -18,7 +17,7 @@ type Cpu struct {
 func (c *Cpu) RefreshRate() {
 	out, err := utils.Exec("adb shell top -n 1 -d 1")
 	if err != nil {
-		fmt.Printf("top命令失败，err is：%v\n", err.Error())
+		log.Printf("top命令失败，err is：%v\n", err.Error())
 	} else {
 		matchs := utils.RegFind(`User\s+(\d+)%.*?System\s+(\d+)%`, out, 1, 2)
 		if len(matchs) < 2 {
@@ -30,7 +29,7 @@ func (c *Cpu) RefreshRate() {
 	}
 	out, err = utils.Exec("adb shell cat /sys/class/thermal/thermal_zone0/temp")
 	if err != nil {
-		fmt.Printf("获取温度命令失败，err is：%v\n", err.Error())
+		log.Printf("获取温度命令失败，err is：%v\n", err.Error())
 	} else {
 		log.Printf("temperature is : %#v", out)
 

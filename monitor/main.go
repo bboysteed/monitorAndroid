@@ -2,7 +2,6 @@ package main
 
 import (
 	"encoding/json"
-	"fmt"
 	"github.com/gorilla/websocket"
 	"io/ioutil"
 	"log"
@@ -61,12 +60,12 @@ func main() {
 func handleMissionStatews(w http.ResponseWriter, r *http.Request) {
 	conn, err := upgrader.Upgrade(w, r, nil)
 	if err != nil {
-		fmt.Printf("handleMissionStatews ws upgrade filed,err is: %v", err)
+		log.Printf("handleMissionStatews ws upgrade filed,err is: %v", err)
 		return
 	}
 
 	for downmission.State == "running" {
-		fmt.Println(downmission)
+		log.Println(downmission)
 		if downmission.Progress >= upmission.Thread*len(upmission.Apps) {
 			downmission.State = "finished"
 		} else {
@@ -103,18 +102,18 @@ func handleCommitMission(writer http.ResponseWriter, request *http.Request) {
 	//body解析
 	body, err := ioutil.ReadAll(request.Body)
 	if err != nil {
-		fmt.Printf("read from http body with err:%v\n", err)
+		log.Printf("read from http body with err:%v\n", err)
 	}
 	//log.Printf("%s",body)
 	json.Unmarshal(body, upmission)
-	fmt.Printf("upmission:%#v\n", upmission)
+	log.Printf("upmission:%#v\n", upmission)
 	downmission.ID = 1
 	downmission.Name = upmission.Name
 	downmission.StartTime = time.Now().Format("06/01/02 15:04")
 	downmission.State = "running"
 	downmission.DeviceOffline = false
 	rsp, _ := json.Marshal(downmission)
-	fmt.Println(string(rsp))
+	//fmt.Println(string(rsp))
 	writer.Write(rsp)
 	go monkey.RunningMonkey(upmission, downmission, logPath)
 
@@ -143,7 +142,7 @@ func checkDeviceOffline() {
 	for {
 		_, err := utils.Exec("adb shell ls /data") //
 		if err != nil {
-			fmt.Printf("devices is offline,please reconnect device...\n")
+			log.Printf("devices is offline,please reconnect device...\n")
 			downmission.DeviceOffline = true
 		} else {
 			downmission.DeviceOffline = false
@@ -158,26 +157,26 @@ func checkConnection() {
 	var err error
 	out, err = utils.Exec("adb shell ls /data") //
 	if err != nil {
-		fmt.Printf("devices is offline,please connect device,then try again...,err is:%v", err)
+		log.Printf("devices is offline,please connect device,then try again...,err is:%v", err)
 		os.Exit(1)
 	} else {
 		downmission.DeviceOffline = false
-		fmt.Println("设备在线:")
+		log.Println("设备在线:")
 		out, _ = utils.Exec("adb devices")
-		fmt.Printf(out)
+		log.Printf(out)
 	}
 }
 
 func loadJson() {
 	bytes, err := ioutil.ReadFile("./packages.json")
 	if err != nil {
-		fmt.Println("读取packages.json文件失败", err)
+		log.Println("读取packages.json文件失败", err)
 		return
 	}
 
 	err = json.Unmarshal(bytes, &phones)
 	if err != nil {
-		fmt.Println("解析packages.json文件失败", err)
+		log.Println("解析packages.json文件失败", err)
 		return
 	}
 	//fmt.Printf("%v\n", phones)
@@ -186,7 +185,7 @@ func loadJson() {
 func HandleWebsocket(w http.ResponseWriter, r *http.Request) {
 	conn, err := upgrader.Upgrade(w, r, nil)
 	if err != nil {
-		fmt.Printf("ws upgrade filed,err is: %v", err)
+		log.Printf("ws upgrade filed,err is: %v", err)
 		return
 	}
 	for !downmission.DeviceOffline {
@@ -209,7 +208,7 @@ func handleGetApps(w http.ResponseWriter, req *http.Request) {
 		w.Write([]byte(`{"msg":"offline"}`))
 		return
 	}
-	fmt.Printf("req url is: %v\n", req.URL)
+	log.Printf("req url is: %v\n", req.URL)
 	phoneNow.GetAllPackages(&phones)
 	rep, _ := json.Marshal(phoneNow)
 	w.Write(rep)

@@ -2,8 +2,8 @@ package models
 
 import (
 	"encoding/json"
-	"fmt"
 	"io/ioutil"
+	"log"
 	"monitorAndroid/utils"
 	"regexp"
 )
@@ -30,7 +30,7 @@ func (p *Phone) GetAllPackages(phones *[]Phone) {
 	res := make([]string, 0)
 	out, err = utils.Exec("adb shell pm list packages")
 	if err != nil {
-		fmt.Printf("list package 命令失败，err is：%v\n", err.Error())
+		log.Printf("list package 命令失败，err is：%v\n", err.Error())
 	} else {
 		reg := regexp.MustCompile(`package:(.*?)\s+`)
 		match := reg.FindAllStringSubmatch(out, -1)
@@ -48,11 +48,11 @@ func (p *Phone) GetAllPackages(phones *[]Phone) {
 
 	newJson, marshallErr := json.Marshal(phones)
 	if marshallErr != nil {
-		fmt.Printf("marshall phones err, err is:%v\n", marshallErr)
+		log.Printf("marshall phones err, err is:%v\n", marshallErr)
 	} else {
 		err = ioutil.WriteFile("./packages.json", newJson, 0644)
 		if err != nil {
-			fmt.Printf("Write json err,err is: %v\n", err)
+			log.Printf("Write json err,err is: %v\n", err)
 		}
 	}
 
@@ -67,7 +67,7 @@ func (p *Phone) GetMacAddress() {
 	//adb shell cat /sys/class/net/wlan0/address
 	out, err = utils.Exec("adb shell cat /sys/class/net/wlan0/address")
 	if err != nil {
-		fmt.Printf("cat mac adress 命令失败，err is：%v\n", err.Error())
+		log.Printf("cat mac adress 命令失败，err is：%v\n", err.Error())
 	} else {
 		reg := regexp.MustCompile(`\s+`)
 		androidID = reg.ReplaceAllString(out, "")
