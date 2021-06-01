@@ -31,9 +31,8 @@ func (c *Cpu) RefreshRate() {
 	if err != nil {
 		log.Printf("获取温度命令失败，err is：%v\n", err.Error())
 	} else {
-		log.Printf("temperature is : %#v", out)
-
 		c.Temperature = float32(utils.Str2Uint(strings.ReplaceAll(out, "\r\n", ""))) / 1000.0
+		log.Printf("temperature is : %v", c.Temperature)
 	}
 	time.Sleep(time.Second)
 }
