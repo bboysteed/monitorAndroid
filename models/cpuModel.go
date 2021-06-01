@@ -3,7 +3,7 @@ package models
 import (
 	"log"
 	"monitorAndroid/utils"
-	"strings"
+	"regexp"
 	"time"
 )
 
@@ -31,7 +31,7 @@ func (c *Cpu) RefreshRate() {
 	if err != nil {
 		log.Printf("获取温度命令失败，err is：%v\n", err.Error())
 	} else {
-		c.Temperature = float32(utils.Str2Uint(strings.ReplaceAll(out, "\r\n", ""))) / 1000.0
+		c.Temperature = float32(utils.Str2Uint(regexp.MustCompile(`\s*`).ReplaceAllString(out,""))) / 1000.0
 		log.Printf("temperature is : %v", c.Temperature)
 	}
 	time.Sleep(time.Second)
