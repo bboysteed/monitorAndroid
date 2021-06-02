@@ -62,7 +62,7 @@ func handleMissionStatews(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	for downmission.State == "running" {
+	for downmission.State == "running" && !downmission.DeviceOffline {
 		log.Println(downmission)
 		if downmission.Progress >= upmission.Thread*len(upmission.Apps) {
 			downmission.State = "finished"
