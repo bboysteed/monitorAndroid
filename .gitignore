@@ -17,7 +17,6 @@
 
 .DS_Store
 node_modules
-/dist
 /logs
 monitorWeb/dist
 
