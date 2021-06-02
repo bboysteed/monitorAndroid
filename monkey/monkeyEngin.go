@@ -27,13 +27,14 @@ func RunningMonkey(um *models.UpMission, dm *models.DownMission, logPath string)
 			log.Printf("CREAT DIR path with err :%v\n", err)
 		}
 		for _, app := range um.Apps {
-			go RunAMonkey(app, strconv.Itoa(um.Interval), storePath,strconv.Itoa(um.OperaNums),dm)
+			go RunAMonkey(app, strconv.Itoa(um.Interval), storePath,strconv.Itoa(um.OperaNums),dm,now)
 			time.Sleep(time.Second)
 		}
 	}
 }
-func RunAMonkey(app, interval, storePath ,operaNums string, dm *models.DownMission) {
-	storelogPath := filepath.Join(storePath, app+".log")
+
+func RunAMonkey(app, interval, storePath ,operaNums string, dm *models.DownMission,now string) {
+	storelogPath := filepath.Join(storePath, now+app+".log")
 	log.Printf("开始测试软件:%v...\n", app)
 	command := fmt.Sprintf("adb shell monkey -p %v --pct-syskeys 0 --throttle %v -v -v -v %v >%v", app, interval,operaNums, storelogPath)
 	log.Printf("test command is:%v\n", command)
