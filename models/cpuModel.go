@@ -21,7 +21,7 @@ func (c *Cpu) RefreshRate() {
 	} else {
 		matchs := utils.RegFind(`User\s+(\d+)%.*?System\s+(\d+)%`, out, 1, 2)
 		if len(matchs) < 2 {
-			panic("this android platform is not suitable")
+			log.Println("获取cpu信息失败")
 		}
 		c.UserRate = utils.Str2Uint(matchs[0])
 		c.SystemRate = utils.Str2Uint(matchs[1])
