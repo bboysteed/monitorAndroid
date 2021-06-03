@@ -22,6 +22,7 @@ func (c *Cpu) RefreshRate() {
 		matchs := utils.RegFind(`User\s+(\d+)%.*?System\s+(\d+)%`, out, 1, 2)
 		if len(matchs) < 2 {
 			log.Println("获取cpu信息失败")
+			return
 		}
 		c.UserRate = utils.Str2Uint(matchs[0])
 		c.SystemRate = utils.Str2Uint(matchs[1])
