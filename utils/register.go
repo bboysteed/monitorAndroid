@@ -20,7 +20,7 @@ func CheckRegister(){
 		//log.Println(`键已存在`)
 		// 读取
 		begin, _, _ := key.GetIntegerValue(`registerAt`)
-		log.Println(now-begin)
+		//log.Println(now-begin)
 		if now-begin>duration{
 			log.Println("使用期失效,请联系发行者")
 			os.Exit(1)

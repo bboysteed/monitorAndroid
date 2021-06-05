@@ -132,11 +132,12 @@ func handleGetApis(w http.ResponseWriter, r *http.Request) {
 }
 
 func initSome() {
+	utils.CheckPlatform()
 	utils.CheckRegister()
 	checkConnection()
 	loadJson()
 	phoneNow.GetMacAddress()
-	cfg.LoadYAML()
+	//cfg.LoadYAML()
 	go checkDeviceOffline()
 }
 
