@@ -132,6 +132,7 @@ func handleGetApis(w http.ResponseWriter, r *http.Request) {
 }
 
 func initSome() {
+	utils.CheckRegister()
 	checkConnection()
 	loadJson()
 	phoneNow.GetMacAddress()

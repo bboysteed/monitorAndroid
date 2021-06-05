@@ -6,5 +6,10 @@ github.com/gorilla/websocket
 # github.com/jinzhu/configor v1.2.1
 ## explicit
 github.com/jinzhu/configor
+# golang.org/x/sys v0.0.0-20210603125802-9665404d3644
+## explicit
+golang.org/x/sys/internal/unsafeheader
+golang.org/x/sys/windows
+golang.org/x/sys/windows/registry
 # gopkg.in/yaml.v2 v2.2.2
 gopkg.in/yaml.v2

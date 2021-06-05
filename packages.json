@@ -2,23 +2,21 @@
   {
     "androidID": "a4:04:50:86:d8:84",
     "packages": [
-      "com.chery.icm",
-      "com.chery.eol",
-      "com.android.soundrecorder",
-      "com.chery.radio",
-      "com.yfve.pinyinime",
-      "com.chery.bt",
-      "com.chery.vr",
-      "com.iflytek.cutefly.speechclient.hmi",
-      "com.chery.help",
-      "com.chou.acemusicplayer",
-      "com.chery.property",
       "com.autonavi.amapauto",
+      "cn.kuwo.kwmusiccar",
+      "com.edog.car",
+      "com.android.soundrecorder",
       "com.chery.dialer",
-      "com.chery.assist",
-      "com.chery.systemui",
-      "com.nforetek.bt",
-      "com.skyworthauto.dvrchery"
+      "com.chou.acemusicplayer",
+      "com.chery.violation",
+      "com.chery.multifunc",
+      "com.chery.update",
+      "com.android.systemui",
+      "com.amwin.iap2.service",
+      "com.android.keychain",
+      "com.android.keyguard",
+      "com.example.audioroute",
+      "com.chery.media"
     ]
   }
 ]
