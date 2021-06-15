@@ -2,10 +2,12 @@ package models
 
 import (
 	"encoding/json"
+	"fmt"
 	"io/ioutil"
 	"log"
 	"monitorAndroid/utils"
 	"regexp"
+	"time"
 )
 
 type Phone struct {
@@ -73,5 +75,9 @@ func (p *Phone) GetMacAddress() {
 		androidID = reg.ReplaceAllString(out, "")
 		//mac = strings.ReplaceAll(string(out),"\r\n","")
 	}
-	p.AndroidID = androidID
+	if androidID!="" {
+		p.AndroidID = androidID
+	}else{
+		p.AndroidID = fmt.Sprintf("%v",time.Now().Format("2006-01-02,15:04:05"))
+	}
 }

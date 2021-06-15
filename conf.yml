@@ -1,6 +1,7 @@
 # linux  android
 osname: linux
-
+# x86 arm
+osarch: x86
 host: 192.168.50.168
 
 #db:

@@ -7,6 +7,7 @@ import (
 
 type CFG struct {
 	OsName string
+	OsArch string
 	Host   string
 }
 

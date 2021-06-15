@@ -41,8 +41,10 @@ var (
 
 //adb shell cat /sys/class/net/wlan0/address
 func main() {
+	cfg.LoadYAML()
+
 	initSome()
-	//cfg.LoadYAML()
+
 
 	http.Handle("/", http.FileServer(http.Dir("dist/")))
 	http.HandleFunc("/ws", HandleWebsocket)
@@ -132,13 +134,19 @@ func handleGetApis(w http.ResponseWriter, r *http.Request) {
 }
 
 func initSome() {
+	setplatforArch()
 	utils.CheckPlatform()
 	utils.CheckRegister()
 	checkConnection()
 	loadJson()
 	phoneNow.GetMacAddress()
-	//cfg.LoadYAML()
+	cfg.LoadYAML()
 	go checkDeviceOffline()
+}
+
+func setplatforArch() {
+	cpu.Arch = cfg.OsArch
+	ram.Arch = cfg.OsArch
 }
 
 func checkDeviceOffline() {

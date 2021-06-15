@@ -59,38 +59,37 @@ package main
 
 import (
 	"fmt"
-	"golang.org/x/sys/windows/registry"
-	"log"
-	"os"
 	"time"
 )
 
 func main() {
-	duration := uint64(30*24*60*60)  //30days
-	now:=uint64(time.Now().Unix())
-	// 创建：指定路径的项
-	// 路径：HKEY_CURRENT_USER\Software\Hello Go
-	key, exists, _ := registry.CreateKey(registry.CURRENT_USER, `SOFTWARE\GoAuthor`, registry.ALL_ACCESS)
-	defer key.Close()
-
-	// 判断是否已经存在了
-	if exists {
-		fmt.Println(`键已存在`)
-		// 读取：字符串
-		begin, _, _ := key.GetIntegerValue(`registerAt`)
-		fmt.Println(begin)
-		if now-begin>duration{
-			log.Println("使用期失效")
-			os.Exit(1)
-		}
-	} else {
-		fmt.Println(`新建注册表键`)
-		// 写入：64位整形值
-		err := key.SetQWordValue(`registerAt`, uint64(time.Now().Unix()))
-		if err != nil {
-			log.Printf("注册失败，请咨询")
-		}
-	}
+	a := fmt.Sprintf("%v", time.Now().Format("2006-01-02,15:04:05"))
+	fmt.Println(a)
+	//duration := uint64(30*24*60*60)  //30days
+	//now:=uint64(time.Now().Unix())
+	//// 创建：指定路径的项
+	//// 路径：HKEY_CURRENT_USER\Software\Hello Go
+	//key, exists, _ := registry.CreateKey(registry.CURRENT_USER, `SOFTWARE\GoAuthor`, registry.ALL_ACCESS)
+	//defer key.Close()
+	//
+	//// 判断是否已经存在了
+	//if exists {
+	//	fmt.Println(`键已存在`)
+	//	// 读取：字符串
+	//	begin, _, _ := key.GetIntegerValue(`registerAt`)
+	//	fmt.Println(begin)
+	//	if now-begin>duration{
+	//		log.Println("使用期失效")
+	//		os.Exit(1)
+	//	}
+	//} else {
+	//	fmt.Println(`新建注册表键`)
+	//	// 写入：64位整形值
+	//	err := key.SetQWordValue(`registerAt`, uint64(time.Now().Unix()))
+	//	if err != nil {
+	//		log.Printf("注册失败，请咨询")
+	//	}
+	//}
 
 	// 写入：32位整形值
 	//key.SetDWordValue(`32位整形值`, uint32(123456))
