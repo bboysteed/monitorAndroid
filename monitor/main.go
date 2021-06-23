@@ -139,7 +139,7 @@ func initSome() {
 	utils.CheckRegister()
 	checkConnection()
 	loadJson()
-	phoneNow.GetMacAddress()
+	phoneNow.GetMacAddress(cfg)
 	cfg.LoadYAML()
 	go checkDeviceOffline()
 }

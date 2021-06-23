@@ -4,6 +4,17 @@ osname: linux
 osarch: x86
 host: 192.168.50.168
 
+getmaccommand: adb shell settings get secure android_id
+#备选项:
+#  adb shell settings get secure android_id
+
+
+gettemprature:
+#备选项:
+#  adb shell cat /sys/class/thermal/thermal_zone0/temp
+#  adb shell cat /sys/class/thermal/thermal_zone1/temp
+
+
 #db:
 #  name:     test
 #  user:     test

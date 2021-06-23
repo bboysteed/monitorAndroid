@@ -9,6 +9,7 @@ type CFG struct {
 	OsName string
 	OsArch string
 	Host   string
+	GetMacCommand string
 }
 
 func (cfg *CFG) LoadYAML() {
@@ -16,5 +17,5 @@ func (cfg *CFG) LoadYAML() {
 	if err != nil {
 		log.Printf("conf load failed, err is: %v\n", err)
 	}
-	log.Printf("cfg is: %v\n", cfg)
+	log.Printf("cfg is: %#v\n", cfg)
 }

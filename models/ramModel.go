@@ -24,6 +24,7 @@ func (r *Ram) RefreshRate() {
 		total := utils.RegFind(`Total\s+RAM:\s+(\d+)\s+kB`, out, 1)
 		used := utils.RegFind(`Used\s+RAM:\s+(\d+)\s+kB`, out, 1)
 		r.Rate = int((float32(utils.Str2Uint(used[0])) / float32(utils.Str2Uint(total[0]))) * 100.0)
+
 	}else if r.Arch=="x86"{
 		total := utils.RegFind(`Total\s+RAM:\s+([\d,]+)K`, out, 1)
 		used := utils.RegFind(`Used\s+RAM:\s+([\d,]+)K`, out, 1)

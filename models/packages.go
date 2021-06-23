@@ -60,14 +60,20 @@ func (p *Phone) GetAllPackages(phones *[]Phone) {
 
 }
 
-func (p *Phone) GetMacAddress() {
+func (p *Phone) GetMacAddress(cfg *CFG) {
 	var out string
 	var err error
 	var androidID string
 	//get mac adress
 	//adb shell settings get secure android_id
 	//adb shell cat /sys/class/net/wlan0/address
-	out, err = utils.Exec("adb shell cat /sys/class/net/wlan0/address")
+	var command string
+	if cfg.GetMacCommand==""{
+		command = "adb shell cat /sys/class/net/wlan0/address"
+	}else{
+		command=cfg.GetMacCommand
+	}
+	out, err = utils.Exec(command)
 	if err != nil {
 		log.Printf("cat mac adress 命令失败，err is：%v\n", err.Error())
 	} else {
