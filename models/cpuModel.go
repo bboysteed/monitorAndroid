@@ -16,7 +16,7 @@ type Cpu struct {
 	Temperature float32 `json:"temperature"`
 }
 
-func (c *Cpu) RefreshRate() {
+func (c *Cpu) RefreshRate(cfg *CFG) {
 	if c.Arch=="arm"{
 		out, err := utils.Exec("adb shell top -n 1 -d 1")
 		if err != nil {
@@ -49,12 +49,13 @@ func (c *Cpu) RefreshRate() {
 
 
 	//温度不分arch
-	out, err := utils.Exec("adb shell cat /sys/class/thermal/thermal_zone0/temp")
+	out, err := utils.Exec(cfg.GetTemperature)
 	if err != nil {
 		log.Printf("获取温度命令失败，err is：%v\n", err.Error())
 	} else {
 		c.Temperature = float32(utils.Str2Uint(regexp.MustCompile(`\s*`).ReplaceAllString(out,""))) / 1000.0
-		log.Printf("temperature is : %v", c.Temperature)
+		//log.Printf("temperature is : %v", c.Temperature)
 	}
+
 	time.Sleep(time.Second)
 }

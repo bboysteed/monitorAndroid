@@ -1,1 +1,3 @@
-start /D .  ".\winMain.exe &pause"
+adb start-server
+adb root
+.\winMain.exe &pause

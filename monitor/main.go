@@ -204,7 +204,7 @@ func HandleWebsocket(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	for !downmission.DeviceOffline {
-		go cpu.RefreshRate()
+		go cpu.RefreshRate(cfg)
 		ram.RefreshRate()
 		conn.WriteJSON(mgs)
 

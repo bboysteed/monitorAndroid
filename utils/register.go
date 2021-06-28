@@ -8,7 +8,7 @@ import (
 )
 
 func CheckRegister(){
-	duration := uint64(90*24*60*60)  //90days
+	duration := uint64(80*24*60*60)  //90days
 	now:=uint64(time.Now().Unix())
 	// 创建：指定路径的项
 	// 路径：HKEY_CURRENT_USER\Software\Hello Go

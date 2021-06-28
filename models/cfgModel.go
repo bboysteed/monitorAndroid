@@ -6,10 +6,11 @@ import (
 )
 
 type CFG struct {
-	OsName string
-	OsArch string
-	Host   string
-	GetMacCommand string
+	OsName         string
+	OsArch         string
+	Host           string
+	GetMacCommand  string
+	GetTemperature string
 }
 
 func (cfg *CFG) LoadYAML() {

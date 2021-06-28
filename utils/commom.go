@@ -1,6 +1,7 @@
 package utils
 
 import (
+	"log"
 	"regexp"
 )
 
@@ -11,7 +12,8 @@ func Str2Uint(str string) int {
 		if '0' <= v && v <= '9' {
 			res = res*10 + int(v) - '0'
 		} else {
-			panic("input string is not just contains pure nums")
+			log.Fatal("this string is not a pure num")
+			return 0
 
 		}
 	}

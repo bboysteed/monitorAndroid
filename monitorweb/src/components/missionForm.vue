@@ -17,8 +17,13 @@
           <el-input v-model="ruleForm.missionName"></el-input>
         </el-form-item>
         <el-form-item label="被测app" prop="apps">
-          <el-select v-model="ruleForm.apps" multiple placeholder="请选择要测试的app" size="medium" style="width: 300px"
-                     clearable>
+          <el-select v-model="ruleForm.apps"
+                     multiple placeholder="请选择要测试的app"
+                     size="medium"
+                     style="width: 300px"
+                     clearable
+                     filterable
+          >
             <el-option
 
                 v-for="app in apps"
